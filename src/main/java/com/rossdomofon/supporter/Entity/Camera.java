@@ -1,8 +1,7 @@
 package com.rossdomofon.supporter.Entity;
 
-import org.jsoup.nodes.Element;
-
 import java.util.Date;
+
 
 public class Camera {
     private Integer id;
@@ -18,8 +17,7 @@ public class Camera {
     private long packetsTransmitted;
     private String state;
 
-    public Camera(Element element) {
-
+    public Camera() {
     }
 
     public Integer getId() {

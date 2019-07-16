@@ -5,6 +5,6 @@ import com.rossdomofon.supporter.Cameras.RdvaParser;
 public class Application {
     public static void main(String[] args) {
         RdvaParser rdvaParser = new RdvaParser("rdva");
-        System.out.println(rdvaParser.partseHtml());
+        System.out.println(rdvaParser.partseHtml().get(0).getId());
     }
 }

@@ -1,5 +1,6 @@
 package com.rossdomofon.supporter.Cameras;
 
+import com.rossdomofon.supporter.Entity.Camera;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
@@ -8,6 +9,7 @@ import org.jsoup.select.Elements;
 import java.io.IOException;
 import java.net.MalformedURLException;
 import java.net.URL;
+import java.util.ArrayList;
 
 public class RdvaParser {
     URL url;
@@ -21,19 +23,25 @@ public class RdvaParser {
         }
     }
 
-    public String partseHtml() {
+    public ArrayList<Camera> partseHtml() {
         try {
             html = Jsoup.parse(url, 1000);
         } catch (IOException e) {
             e.printStackTrace();
         }
+
+        ArrayList<Camera> cameras = new ArrayList<Camera>(100);
+
         Elements listElements = html.body().getElementsByTag("tr");
+        listElements.remove(0);
+
         for (Element e : listElements) {
-            for (int i = 0; i < e.childNodeSize(); i++) {
-                System.out.println(e.getElementsByIndexEquals(i).text());
-            }
+            Camera camera = new Camera();
+            camera.setId(Integer.parseInt(e.child(0).text()));
+            camera.setBitRate(Double.parseDouble(e.child(2).text()));
+
+            cameras.add(camera);
         }
-return null;
-//        return listElements.get(2).getElementsByIndexEquals(0).text();
+        return cameras;
     }
 }
