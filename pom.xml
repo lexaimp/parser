@@ -7,6 +7,11 @@
     <groupId>com.rosdomofon.parser</groupId>
     <artifactId>RdvaHttpParser</artifactId>
     <version>1.0-SNAPSHOT</version>
+
+    <properties>
+        <hibernate-version>5.4.3.Final</hibernate-version>
+    </properties>
+
     <dependencies>
         <dependency>
             <groupId>org.jsoup</groupId>
@@ -16,7 +21,7 @@
         <dependency>
             <groupId>org.hibernate</groupId>
             <artifactId>hibernate-core</artifactId>
-            <version>5.4.3.Final</version>
+            <version>${hibernate-version}</version>
         </dependency>
 
         <dependency>
