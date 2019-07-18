@@ -1,4 +1,4 @@
-package com.rossdomofon.supporter.Factory;
+package com.rossdomofon.supporter.factory;
 
 import org.hibernate.SessionFactory;
 
@@ -12,7 +12,7 @@ public class HibernateSessionFactory {
         if (sessionFactory == null) {
             /*try {
                 Configuration configuration = new Configuration().configure();
-                configuration.addAnnotatedClass(Cameras.class);
+                configuration.addAnnotatedClass(parser.class);
                 StandardServiceRegistryBuilder builder = new StandardServiceRegistryBuilder()
                         .applySetting(configuration.getProperty("1"));
                 sessionFactory = configuration.buildSessionFactory(builder.build());

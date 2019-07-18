@@ -1,10 +1,10 @@
 package com.rossdomofon.supporter;
 
-import com.rossdomofon.supporter.Cameras.RdvaParser;
+import com.rossdomofon.supporter.parser.ParserRdva;
 
 public class Application {
     public static void main(String[] args) {
-        RdvaParser rdvaParser = new RdvaParser("rdva");
-        System.out.println(rdvaParser.partseHtml().get(2).getId());
+        ParserRdva parserRdva = new ParserRdva("rdva");
+        System.out.println(parserRdva.parseHtml().get(2).getId());
     }
 }

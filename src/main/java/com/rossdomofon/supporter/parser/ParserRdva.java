@@ -1,6 +1,6 @@
-package com.rossdomofon.supporter.Cameras;
+package com.rossdomofon.supporter.parser;
 
-import com.rossdomofon.supporter.Entity.Camera;
+import com.rossdomofon.supporter.entity.Camera;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
@@ -11,11 +11,11 @@ import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.ArrayList;
 
-public class RdvaParser {
+public class ParserRdva {
     URL url;
     Document html;
 
-    public RdvaParser(String rdva) {
+    public ParserRdva(String rdva) {
         try {
             url = new URL("http://" + rdva + ".rosdomofon.com:2205/sysinfo/sources");
         } catch (MalformedURLException e) {
@@ -23,7 +23,7 @@ public class RdvaParser {
         }
     }
 
-    public ArrayList<Camera> partseHtml() {
+    public ArrayList<Camera> parseHtml() {
         try {
             html = Jsoup.parse(url, 1000);
         } catch (IOException e) {
