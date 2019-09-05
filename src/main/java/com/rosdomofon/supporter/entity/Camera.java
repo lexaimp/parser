@@ -1,4 +1,4 @@
-package com.rossdomofon.supporter.entity;
+package com.rosdomofon.supporter.entity;
 
 import java.util.Date;
 

@@ -1,7 +1,8 @@
-package com.rossdomofon.supporter;
+package com.rosdomofon.supporter;
 
-import com.rossdomofon.supporter.entity.Camera;
-import com.rossdomofon.supporter.parser.RdvaParser;
+import com.rosdomofon.supporter.entity.Camera;
+import com.rosdomofon.supporter.parser.RdvaParser;
+import com.rosdomofon.supporter.rest.Authorization;
 
 import java.util.ArrayList;
 import java.util.stream.Collectors;
@@ -13,5 +14,6 @@ public class Application {
                 .filter(camera -> camera.getBitRate() > 1100)
                 .collect(Collectors.toCollection(ArrayList::new));
         listCameras.forEach((camera -> System.out.print(camera.getId() + ", ")));
+        System.out.println(Authorization.getAuthorization().getAccessToken());
     }
 }

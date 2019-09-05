@@ -1,4 +1,4 @@
-package com.rossdomofon.supporter.entity;
+package com.rosdomofon.supporter.entity;
 
 public class Company {
     private Integer id;

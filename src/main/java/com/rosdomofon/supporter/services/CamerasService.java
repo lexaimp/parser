@@ -1,6 +1,6 @@
-package com.rossdomofon.supporter.services;
+package com.rosdomofon.supporter.services;
 
-import com.rossdomofon.supporter.entity.Camera;
+import com.rosdomofon.supporter.entity.Camera;
 
 import java.util.List;
 

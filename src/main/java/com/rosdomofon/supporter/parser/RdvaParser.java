@@ -1,6 +1,6 @@
-package com.rossdomofon.supporter.parser;
+package com.rosdomofon.supporter.parser;
 
-import com.rossdomofon.supporter.entity.Camera;
+import com.rosdomofon.supporter.entity.Camera;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
