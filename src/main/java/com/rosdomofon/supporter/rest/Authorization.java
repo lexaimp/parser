@@ -38,11 +38,11 @@ public class Authorization {
     private static String getAccessTokenFromAPI() {
         HttpClient client = new DefaultHttpClient();
         HttpPost post = new HttpPost("https://rdba.rosdomofon.com/authserver-service/oauth/token");
-        List<BasicNameValuePair> nameValuePairs = new ArrayList<BasicNameValuePair>(4);
+        List<BasicNameValuePair> nameValuePairs = new ArrayList<>(4);
         nameValuePairs.add(new BasicNameValuePair("grant_type", "password"));
         nameValuePairs.add(new BasicNameValuePair("client_id", "machine"));
-        nameValuePairs.add(new BasicNameValuePair("username", "userName"));
-        nameValuePairs.add(new BasicNameValuePair("password", "password"));
+        nameValuePairs.add(new BasicNameValuePair("username", ""));
+        nameValuePairs.add(new BasicNameValuePair("password", ""));
         try {
             post.setEntity(new UrlEncodedFormEntity(nameValuePairs));
         } catch (UnsupportedEncodingException e) {
