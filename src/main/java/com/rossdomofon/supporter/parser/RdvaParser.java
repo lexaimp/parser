@@ -11,11 +11,11 @@ import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.ArrayList;
 
-public class ParserRdva {
+public class RdvaParser {
     URL url;
     Document html;
 
-    public ParserRdva(String rdva) {
+    public RdvaParser(String rdva) {
         try {
             url = new URL("http://" + rdva + ".rosdomofon.com:2205/sysinfo/sources");
         } catch (MalformedURLException e) {
@@ -44,6 +44,4 @@ public class ParserRdva {
         }
         return cameras;
     }
-
-
 }
