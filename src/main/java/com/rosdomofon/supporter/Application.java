@@ -2,18 +2,16 @@ package com.rosdomofon.supporter;
 
 import com.rosdomofon.supporter.entity.Camera;
 import com.rosdomofon.supporter.parser.RdvaParser;
-import com.rosdomofon.supporter.rest.Authorization;
+import com.rosdomofon.supporter.services.RdvasService;
 
-import java.util.ArrayList;
-import java.util.stream.Collectors;
+import java.util.List;
 
 public class Application {
     public static void main(String[] args) {
-        RdvaParser rdvaParser = new RdvaParser("rdva");
-        ArrayList<Camera> listCameras = rdvaParser.parseHtml().stream()
-                .filter(camera -> camera.getBitRate() > 1100)
-                .collect(Collectors.toCollection(ArrayList::new));
-        listCameras.forEach((camera -> System.out.print(camera.getId() + ", ")));
-        System.out.println(Authorization.getAuthorization().getAccessToken());
+        RdvaParser rdvaParser = new RdvaParser(new RdvasService().getRdvas());
+        List<Camera> cameras = rdvaParser.parseHtml();
+        cameras = rdvaParser.filterByHighBitRate(cameras, 1100.0);
+        System.out.println(cameras.toString());
+        System.out.println((long) cameras.size());
     }
 }

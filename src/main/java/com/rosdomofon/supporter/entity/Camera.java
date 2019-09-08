@@ -1,21 +1,27 @@
 package com.rosdomofon.supporter.entity;
 
+import java.net.URL;
 import java.util.Date;
 
 
 public class Camera {
-    private Integer id;
-    private Date date;
-    private double bitRate;
-    private long framesCount;
-    private short frameRate;
-    private short decodingSpeed;
-    private Date archiveStreamStarted;
-    private int segmentsArchived;
-    private Date liveStreamStarted;
-    private long packetsReceived;
-    private long packetsTransmitted;
-    private String state;
+    private Integer id = null;
+    private String url = null;
+    private String user = null;
+    private String password = null;
+    private Boolean isPrivate = false;
+    private Address address;
+    private Date date = null;
+    private double bitRate = 0;
+    private long framesCount = 0;
+    private short frameRate = 0;
+    private short decodingSpeed = 0;
+    private Date archiveStreamStarted = null;
+    private int segmentsArchived = 0;
+    private Date liveStreamStarted = null;
+    private long packetsReceived = 0L;
+    private long packetsTransmitted = 0L;
+    private String state = null;
 
     public Camera() {
     }
@@ -114,5 +120,57 @@ public class Camera {
 
     public void setState(String state) {
         this.state = state;
+    }
+
+    public String getUrl() {
+        return url;
+    }
+
+    public void setUrl(String url) {
+        this.url = url;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
+
+    public boolean isPrivate() {
+        return isPrivate;
+    }
+
+    public void setPrivate(Boolean aPrivate) {
+        isPrivate = aPrivate;
+    }
+
+    public Address getAddress() {
+        return address;
+    }
+
+    public void setAddress(Address address) {
+        this.address = address;
+    }
+
+    public String getUser() {
+        return user;
+    }
+
+    public void setUser(String user) {
+        this.user = user;
+    }
+
+    public Boolean getPrivate() {
+        return isPrivate;
+    }
+
+    @Override
+    public String toString() {
+        return "ID:" + id +
+                "; url:" + url +
+                "; address:" + address +
+                "; bitRate:" + bitRate + "\n";
     }
 }

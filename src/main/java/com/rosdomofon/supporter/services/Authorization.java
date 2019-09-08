@@ -1,10 +1,10 @@
-package com.rosdomofon.supporter.rest;
+package com.rosdomofon.supporter.services;
 
 import org.apache.http.HttpResponse;
 import org.apache.http.client.HttpClient;
 import org.apache.http.client.entity.UrlEncodedFormEntity;
 import org.apache.http.client.methods.HttpPost;
-import org.apache.http.impl.client.DefaultHttpClient;
+import org.apache.http.impl.client.HttpClientBuilder;
 import org.apache.http.message.BasicNameValuePair;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
@@ -17,26 +17,13 @@ import java.io.UnsupportedEncodingException;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Authorization {
+class Authorization {
     private static Authorization authorization;
-    private String AccessToken = getAccessTokenFromAPI();
+    private String accessToken = null;
+    private static final Object lock = new Object();
 
     private Authorization() {
-    }
-
-    public static Authorization getAuthorization() {
-        if (authorization == null) {
-            authorization = new Authorization();
-        }
-        return authorization;
-    }
-
-    public String getAccessToken() {
-        return AccessToken;
-    }
-
-    private static String getAccessTokenFromAPI() {
-        HttpClient client = new DefaultHttpClient();
+        HttpClient client = HttpClientBuilder.create().build();
         HttpPost post = new HttpPost("https://rdba.rosdomofon.com/authserver-service/oauth/token");
         List<BasicNameValuePair> nameValuePairs = new ArrayList<>(4);
         nameValuePairs.add(new BasicNameValuePair("grant_type", "password"));
@@ -53,13 +40,27 @@ public class Authorization {
             BufferedReader rd = new BufferedReader(new InputStreamReader(response.getEntity().getContent()));
             try {
                 JSONObject jsonObject = (JSONObject) new JSONParser().parse(rd);
-                return jsonObject.get("access_token").toString();
+                accessToken = jsonObject.get("access_token").toString();
             } catch (ParseException e) {
                 e.printStackTrace();
             }
         } catch (IOException e) {
             e.printStackTrace();
         }
-        return null;
+    }
+
+     static Authorization getAuthorization() {
+        if (authorization == null) {
+            synchronized (lock) {
+                if (authorization == null) {
+                    authorization = new Authorization();
+                }
+            }
+        }
+        return authorization;
+    }
+
+     String getAccessToken() {
+        return accessToken;
     }
 }
