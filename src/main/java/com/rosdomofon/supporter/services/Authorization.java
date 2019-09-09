@@ -20,6 +20,7 @@ import java.util.List;
 class Authorization {
     private static Authorization authorization;
     private String accessToken = null;
+    private String producerAccessToken = null;
     private static final Object lock = new Object();
 
     private Authorization() {
@@ -62,5 +63,33 @@ class Authorization {
 
      String getAccessToken() {
         return accessToken;
+    }
+
+    public String getProducerAccessToken() {
+        HttpClient client = HttpClientBuilder.create().build();
+        HttpPost post = new HttpPost("https://rdba.rosdomofon.com/authserver-service/oauth/token");
+        List<BasicNameValuePair> nameValuePairs = new ArrayList<>(4);
+        nameValuePairs.add(new BasicNameValuePair("grant_type", "password"));
+        nameValuePairs.add(new BasicNameValuePair("client_id", "machine"));
+        nameValuePairs.add(new BasicNameValuePair("username", ""));
+        nameValuePairs.add(new BasicNameValuePair("password", ""));
+        try {
+            post.setEntity(new UrlEncodedFormEntity(nameValuePairs));
+        } catch (UnsupportedEncodingException e) {
+            e.printStackTrace();
+        }
+        try {
+            HttpResponse response = client.execute(post);
+            BufferedReader rd = new BufferedReader(new InputStreamReader(response.getEntity().getContent()));
+            try {
+                JSONObject jsonObject = (JSONObject) new JSONParser().parse(rd);
+                producerAccessToken = jsonObject.get("access_token").toString();
+            } catch (ParseException e) {
+                e.printStackTrace();
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return producerAccessToken;
     }
 }
