@@ -47,7 +47,7 @@ public class RdvaParser {
             for (Element e : listElements) {
                 Integer cameraId = Integer.parseInt(e.child(0).text());
                 Optional<Camera> optionalCamera = cameras.stream().filter(x -> x.getId().equals(cameraId)).findFirst();
-                optionalCamera.ifPresent(camera -> camera.setBitRate(Double.parseDouble(e.child(2).text())));
+                optionalCamera.ifPresent(camera -> camera.setBitRate(Double.parseDouble(e.child(5).text())));
             }
         }
         return cameras;
