@@ -1,6 +1,5 @@
-package com.rosdomofon.supporter.entity;
+package com.rosdomofon.supportive.entity;
 
-import java.net.URL;
 import java.util.Date;
 
 

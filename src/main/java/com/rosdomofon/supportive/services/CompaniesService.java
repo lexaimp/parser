@@ -1,6 +1,6 @@
-package com.rosdomofon.supporter.services;
+package com.rosdomofon.supportive.services;
 
-import com.rosdomofon.supporter.entity.Company;
+import com.rosdomofon.supportive.entity.Company;
 import org.apache.http.HttpResponse;
 import org.apache.http.client.HttpClient;
 import org.apache.http.client.methods.HttpGet;

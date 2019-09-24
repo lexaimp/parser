@@ -1,7 +1,7 @@
-package com.rosdomofon.supporter.services;
+package com.rosdomofon.supportive.services;
 
-import com.rosdomofon.supporter.entity.Address;
-import com.rosdomofon.supporter.entity.Camera;
+import com.rosdomofon.supportive.entity.Address;
+import com.rosdomofon.supportive.entity.Camera;
 import org.apache.http.HttpResponse;
 import org.apache.http.client.HttpClient;
 import org.apache.http.client.methods.HttpGet;

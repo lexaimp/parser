@@ -1,8 +1,8 @@
-package com.rosdomofon.supporter.parser;
+package com.rosdomofon.supportive.parser;
 
-import com.rosdomofon.supporter.entity.Camera;
-import com.rosdomofon.supporter.entity.Rdva;
-import com.rosdomofon.supporter.services.CamerasService;
+import com.rosdomofon.supportive.entity.Camera;
+import com.rosdomofon.supportive.entity.Rdva;
+import com.rosdomofon.supportive.services.CamerasService;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
@@ -54,6 +54,9 @@ public class RdvaParser {
     }
 
     public List<Camera> filterByHighBitRate(List<Camera> cameras, Double bitRate) {
-        return cameras.stream().filter(x -> x.getBitRate() > bitRate).sorted(Comparator.comparingInt(Camera::getId)).collect(Collectors.toList());
+        return cameras.stream()
+                .filter(x -> x.getBitRate() > bitRate)
+                .sorted(Comparator.comparingInt(Camera::getId))
+                .collect(Collectors.toList());
     }
 }

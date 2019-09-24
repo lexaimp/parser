@@ -1,9 +1,9 @@
-package com.rosdomofon.supporter;
+package com.rosdomofon.supportive;
 
-import com.rosdomofon.supporter.entity.Camera;
-import com.rosdomofon.supporter.parser.RdvaParser;
-import com.rosdomofon.supporter.services.CompaniesService;
-import com.rosdomofon.supporter.services.RdvasService;
+import com.rosdomofon.supportive.entity.Camera;
+import com.rosdomofon.supportive.parser.RdvaParser;
+import com.rosdomofon.supportive.services.CompaniesService;
+import com.rosdomofon.supportive.services.RdvasService;
 
 import java.util.List;
 

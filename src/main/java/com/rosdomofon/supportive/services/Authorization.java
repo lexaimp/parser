@@ -1,4 +1,4 @@
-package com.rosdomofon.supporter.services;
+package com.rosdomofon.supportive.services;
 
 import org.apache.http.HttpResponse;
 import org.apache.http.client.HttpClient;
@@ -65,7 +65,7 @@ class Authorization {
         return accessToken;
     }
 
-    public String getProducerAccessToken() {
+    String getProducerAccessToken() {
         HttpClient client = HttpClientBuilder.create().build();
         HttpPost post = new HttpPost("https://rdba.rosdomofon.com/authserver-service/oauth/token");
         List<BasicNameValuePair> nameValuePairs = new ArrayList<>(4);

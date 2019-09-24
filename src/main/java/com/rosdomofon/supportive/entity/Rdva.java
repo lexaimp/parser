@@ -1,4 +1,4 @@
-package com.rosdomofon.supporter.entity;
+package com.rosdomofon.supportive.entity;
 
 public class Rdva {
     private Integer id;
